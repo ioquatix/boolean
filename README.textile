@@ -1,0 +1,60 @@
+h1. Boolean -- Additional Boolean-related core extensions
+
+| *Author* | Tim Morgan |
+| *Version* | 1.0 (Feb 15, 2011) |
+| *License* | Released under the MIT license. |
+
+h2. About
+
+*Boolean* adds some helpful methods for working with Ruby's Boolean types,
+@TrueClass@ and @FalseClass@ (the singleton classes whose only instances are
+@true@ and @false@, respectively).
+
+With *Boolean*, you get a @Boolean@ mixin so you can refer to @true@ and @false@
+under a common class name:
+
+<pre><code>
+  if variable.kind_of?(Boolean) then
+    [ ... ]
+  end
+</code></pre>
+
+You can also type-cast Ruby objects into their Boolean values:
+
+<pre><code>
+  "string".to_bool #=> true
+  nil.to_bool #=> false
+</code></pre>
+
+And you can parse various Ruby objects to Booleans:
+
+<pre><code>
+  "yes".parse_bool #=> true
+  "no".parse_bool #=> false
+  1.parse_bool => true
+  0.parse_bool => false
+</code></pre>
+
+(@parse_bool@ is also aliased as @to_b@ to be consistent with the
+@to_i@/@to_int@ naming paradigm.)
+
+Lastly, inline with the @Integer()@ method, you have a @Boolean()@ method:
+
+<pre><code>
+  Boolean("yes") #=> true
+  Boolean("no") #=> false
+  Boolean("maybe") #=> ArgumentError
+</code></pre>
+
+h2. Installation and Usage
+
+Just add the gem to your project's @Gemfile@:
+
+<pre><code>
+gem 'boolean'
+</code></pre>
+
+All the features shown in the previous section are now available in your project
+code.
+
+More information can be found in the class and method documentation.
