@@ -23,6 +23,8 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.textile",
     "Rakefile",
+    "VERSION",
+    "boolean.gemspec",
     "lib/boolean.rb",
     "spec/boolean_spec.rb",
     "spec/spec_helper.rb"
