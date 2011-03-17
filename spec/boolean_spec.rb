@@ -83,6 +83,7 @@ describe String do
         "FALSE".send(method).should eql(false)
         "False".send(method).should eql(false)
         "0".send(method).should eql(false)
+        "".send(method).should eql(false)
 
         "m".send(method).should eql(false)
         "maybe".send(method).should eql(false)
@@ -137,6 +138,7 @@ describe String do
         -> { "i don't know".send(method) }.should raise_error(ArgumentError)
         -> { "I DON'T KNOW".send(method) }.should raise_error(ArgumentError)
         -> { "I don't know".send(method) }.should raise_error(ArgumentError)
+        -> { "".send(method) }.should raise_error(ArgumentError)
       end
     end
   end

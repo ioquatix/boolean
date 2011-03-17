@@ -73,7 +73,7 @@ class String
   #
   # @return [true, false] The parsed Boolean value of this string.
   # @see #parse_bool!
-  def parse_bool() %w( y Y 1 t T ).include? self[0] end
+  def parse_bool() %w( y Y 1 t T ).include? self[0,1] end
 
   # @see #parse_bool
   def to_b() parse_bool end
@@ -90,9 +90,9 @@ class String
   #   "no".parse_bool! #=> false
   #   "maybe".parse_bool! #=> ArgumentError
   def parse_bool!
-    if %w( y Y 1 t T ).include? self[0] then
+    if %w( y Y 1 t T ).include? self[0,1] then
       true
-    elsif %w( n N 0 f F ).include? self[0] then
+    elsif %w( n N 0 f F ).include? self[0,1] then
       false
     else
       raise ArgumentError, "Invalid value for parse_bool!: #{inspect}"
