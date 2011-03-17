@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{boolean}
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tim Morgan"]
-  s.date = %q{2011-02-15}
+  s.date = %q{2011-03-16}
   s.description = %q{This gem extends core classes, adding helpful methods for working with Booleans (such as #to_bool and #parse_bool, and a Boolean type).}
   s.email = %q{git@timothymorgan.info}
   s.extra_rdoc_files = [
@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://rubygems.org/gems/boolean}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.5.2}
+  s.rubygems_version = %q{1.6.2}
   s.summary = %q{Useful methods for working with Booleans}
   s.test_files = [
     "spec/boolean_spec.rb",
