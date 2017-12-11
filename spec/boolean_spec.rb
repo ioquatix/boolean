@@ -3,52 +3,52 @@ require 'spec_helper'
 describe TrueClass do
   [ :to_bool, :parse_bool, :to_b ].each do |method|
     describe "##{method}" do
-      it("should return true") { true.send(method).should eql(true) }
+      it("should return true") { expect(true.send(method)).to eql(true) }
     end
   end
 
-  it("should be a kind of Boolean") { true.should be_kind_of(Boolean) }
+  it("should be a kind of Boolean") { expect(true).to be_kind_of(Boolean) }
 end
 
 describe FalseClass do
   [ :to_bool, :parse_bool, :to_b ].each do |method|
     describe "##{method}" do
-      it("should return false") { false.send(method).should eql(false) }
+      it("should return false") { expect(false.send(method)).to eql(false) }
     end
   end
 
-  it("should be a kind of Boolean") { false.should be_kind_of(Boolean) }
+  it("should be a kind of Boolean") { expect(false).to be_kind_of(Boolean) }
 end
 
 describe NilClass do
   [ :to_bool, :parse_bool, :to_b ].each do |method|
     describe "##{method}" do
-      it("should return false") { nil.send(method).should eql(false) }
+      it("should return false") { expect(nil.send(method)).to eql(false) }
     end
   end
 end
 
 describe Object do
   describe "#to_bool" do
-    it("should return true") { Object.new.to_bool.should eql(true) }
+    it("should return true") { expect(Object.new.to_bool).to eql(true) }
   end
 
-  it("should not be a kind of Boolean") { Object.new.should_not be_kind_of(Boolean) }
+  it("should not be a kind of Boolean") { expect(Object.new).not_to be_kind_of(Boolean) }
 end
 
 describe Numeric do
   [ :parse_bool, :to_b ].each do |method|
     describe "##{method}" do
       it "should return true if the number is not zero" do
-        1.send(method).should eql(true)
-        1.0.send(method).should eql(true)
-        -1.send(method).should eql(true)
-        -1.0.send(method).should eql(true)
+        expect(1.send(method)).to eql(true)
+        expect(1.0.send(method)).to eql(true)
+        expect(-1.send(method)).to eql(true)
+        expect(-1.0.send(method)).to eql(true)
       end
 
       it "should return false if the number is zero" do
-        0.send(method).should eql(false)
-        0.0.send(method).should eql(false)
+        expect(0.send(method)).to eql(false)
+        expect(0.0.send(method)).to eql(false)
       end
     end
   end
@@ -58,42 +58,42 @@ describe String do
   [ :parse_bool, :to_b ].each do |method|
     describe "##{method}" do
       it "should return true if the string starts with 1, y, Y, t, or T" do
-        "y".send(method).should eql(true)
-        "Y".send(method).should eql(true)
-        "yes".send(method).should eql(true)
-        "YES".send(method).should eql(true)
-        "Yes".send(method).should eql(true)
-        "t".send(method).should eql(true)
-        "T".send(method).should eql(true)
-        "true".send(method).should eql(true)
-        "TRUE".send(method).should eql(true)
-        "True".send(method).should eql(true)
-        "1".send(method).should eql(true)
+        expect("y".send(method)).to eql(true)
+        expect("Y".send(method)).to eql(true)
+        expect("yes".send(method)).to eql(true)
+        expect("YES".send(method)).to eql(true)
+        expect("Yes".send(method)).to eql(true)
+        expect("t".send(method)).to eql(true)
+        expect("T".send(method)).to eql(true)
+        expect("true".send(method)).to eql(true)
+        expect("TRUE".send(method)).to eql(true)
+        expect("True".send(method)).to eql(true)
+        expect("1".send(method)).to eql(true)
       end
 
       it "should return false otherwise" do
-        "n".send(method).should eql(false)
-        "N".send(method).should eql(false)
-        "no".send(method).should eql(false)
-        "NO".send(method).should eql(false)
-        "No".send(method).should eql(false)
-        "f".send(method).should eql(false)
-        "F".send(method).should eql(false)
-        "false".send(method).should eql(false)
-        "FALSE".send(method).should eql(false)
-        "False".send(method).should eql(false)
-        "0".send(method).should eql(false)
-        "".send(method).should eql(false)
+        expect("n".send(method)).to eql(false)
+        expect("N".send(method)).to eql(false)
+        expect("no".send(method)).to eql(false)
+        expect("NO".send(method)).to eql(false)
+        expect("No".send(method)).to eql(false)
+        expect("f".send(method)).to eql(false)
+        expect("F".send(method)).to eql(false)
+        expect("false".send(method)).to eql(false)
+        expect("FALSE".send(method)).to eql(false)
+        expect("False".send(method)).to eql(false)
+        expect("0".send(method)).to eql(false)
+        expect("".send(method)).to eql(false)
 
-        "m".send(method).should eql(false)
-        "maybe".send(method).should eql(false)
-        "MAYBE".send(method).should eql(false)
-        "Maybe".send(method).should eql(false)
-        "i".send(method).should eql(false)
-        "I".send(method).should eql(false)
-        "i don't know".send(method).should eql(false)
-        "I DON'T KNOW".send(method).should eql(false)
-        "I don't know".send(method).should eql(false)
+        expect("m".send(method)).to eql(false)
+        expect("maybe".send(method)).to eql(false)
+        expect("MAYBE".send(method)).to eql(false)
+        expect("Maybe".send(method)).to eql(false)
+        expect("i".send(method)).to eql(false)
+        expect("I".send(method)).to eql(false)
+        expect("i don't know".send(method)).to eql(false)
+        expect("I DON'T KNOW".send(method)).to eql(false)
+        expect("I don't know".send(method)).to eql(false)
       end
     end
   end
@@ -101,44 +101,44 @@ describe String do
   [ :parse_bool!, :to_b! ].each do |method|
     describe "##{method}" do
       it "should return true if the string starts with 1, y, Y, t, or T" do
-        "y".send(method).should eql(true)
-        "Y".send(method).should eql(true)
-        "yes".send(method).should eql(true)
-        "YES".send(method).should eql(true)
-        "Yes".send(method).should eql(true)
-        "t".send(method).should eql(true)
-        "T".send(method).should eql(true)
-        "true".send(method).should eql(true)
-        "TRUE".send(method).should eql(true)
-        "True".send(method).should eql(true)
-        "1".send(method).should eql(true)
+        expect("y".send(method)).to eql(true)
+        expect("Y".send(method)).to eql(true)
+        expect("yes".send(method)).to eql(true)
+        expect("YES".send(method)).to eql(true)
+        expect("Yes".send(method)).to eql(true)
+        expect("t".send(method)).to eql(true)
+        expect("T".send(method)).to eql(true)
+        expect("true".send(method)).to eql(true)
+        expect("TRUE".send(method)).to eql(true)
+        expect("True".send(method)).to eql(true)
+        expect("1".send(method)).to eql(true)
       end
 
       it "should return false if the string starts with 0, n, N, f, or F" do
-        "n".send(method).should eql(false)
-        "N".send(method).should eql(false)
-        "no".send(method).should eql(false)
-        "NO".send(method).should eql(false)
-        "No".send(method).should eql(false)
-        "f".send(method).should eql(false)
-        "F".send(method).should eql(false)
-        "false".send(method).should eql(false)
-        "FALSE".send(method).should eql(false)
-        "False".send(method).should eql(false)
-        "0".send(method).should eql(false)
+        expect("n".send(method)).to eql(false)
+        expect("N".send(method)).to eql(false)
+        expect("no".send(method)).to eql(false)
+        expect("NO".send(method)).to eql(false)
+        expect("No".send(method)).to eql(false)
+        expect("f".send(method)).to eql(false)
+        expect("F".send(method)).to eql(false)
+        expect("false".send(method)).to eql(false)
+        expect("FALSE".send(method)).to eql(false)
+        expect("False".send(method)).to eql(false)
+        expect("0".send(method)).to eql(false)
       end
 
       it "should raise ArgumentError otherwise" do
-        -> { "m".send(method) }.should raise_error(ArgumentError)
-        -> { "maybe".send(method) }.should raise_error(ArgumentError)
-        -> { "MAYBE".send(method) }.should raise_error(ArgumentError)
-        -> { "Maybe".send(method) }.should raise_error(ArgumentError)
-        -> { "i".send(method) }.should raise_error(ArgumentError)
-        -> { "I".send(method) }.should raise_error(ArgumentError)
-        -> { "i don't know".send(method) }.should raise_error(ArgumentError)
-        -> { "I DON'T KNOW".send(method) }.should raise_error(ArgumentError)
-        -> { "I don't know".send(method) }.should raise_error(ArgumentError)
-        -> { "".send(method) }.should raise_error(ArgumentError)
+        expect { "m".send(method) }.to raise_error(ArgumentError)
+        expect { "maybe".send(method) }.to raise_error(ArgumentError)
+        expect { "MAYBE".send(method) }.to raise_error(ArgumentError)
+        expect { "Maybe".send(method) }.to raise_error(ArgumentError)
+        expect { "i".send(method) }.to raise_error(ArgumentError)
+        expect { "I".send(method) }.to raise_error(ArgumentError)
+        expect { "i don't know".send(method) }.to raise_error(ArgumentError)
+        expect { "I DON'T KNOW".send(method) }.to raise_error(ArgumentError)
+        expect { "I don't know".send(method) }.to raise_error(ArgumentError)
+        expect { "".send(method) }.to raise_error(ArgumentError)
       end
     end
   end
@@ -147,12 +147,12 @@ end
 describe Kernel do
   describe "#Boolean" do
     it "should call String#parse_bool! and return the result" do
-      string = mock('String')
-      result = mock('result')
+      string = double('String')
+      result = double('result')
 
-      string.should_receive(:parse_bool!).once.and_return(result)
+      expect(string).to receive(:parse_bool!).once.and_return(result)
 
-      Boolean(string).should eql(result)
+      expect(Boolean(string)).to eql(result)
     end
   end
 end
